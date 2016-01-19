@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="PACXX : Programming Accelerators with C++">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>PACXX</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/pacxx/pacxx_page">View on GitHub</a>
+
+          <h1 id="project_title">PACXX</h1>
+          <h2 id="project_tagline">Programming Accelerators with C++</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/pacxx/pacxx_page/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/pacxx/pacxx_page/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="under-construction" class="anchor" href="#under-construction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Under Construction</h3>
+
+<p>This page is a placeholder. Once my research project is open-source all necessary information will be published here. In the meantime, have you ever wanted to write GPU code like this?</p>
+
+<div class="highlight highlight-source-c++"><pre><span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>(<span class="pl-k">int</span> argc, <span class="pl-k">char</span>* argv[]) {
+    <span class="pl-c1">size_t</span> n = <span class="pl-c1">1</span> &lt;&lt; <span class="pl-c1">24</span>;
+    vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-c1">a</span>(n);
+    vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-c1">b</span>(n);
+    vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-c1">c</span>(n);
+
+    <span class="pl-k">auto</span> vadd = [](<span class="pl-k">const</span> vector&lt;<span class="pl-k">int</span>&gt; &amp;a, <span class="pl-k">const</span> vector&lt;<span class="pl-k">int</span>&gt; &amp;b, vector&lt;<span class="pl-k">int</span>&gt; &amp;c) {
+       <span class="pl-k">if</span> (i &gt;= a.<span class="pl-c1">size</span>()) <span class="pl-k">return</span>;
+       c[i] = a[i] + b[i];
+    };
+
+    <span class="pl-c1">size_t</span> threads = <span class="pl-c1">128</span>;
+    <span class="pl-c1">size_t</span> blocks = (n + (threads * <span class="pl-c1">2</span> - <span class="pl-c1">1</span>)) / (threads * <span class="pl-c1">2</span>);
+
+     <span class="pl-k">auto</span> vadd_gpu = <span class="pl-c1">kernel</span>(vadd, {{blocks}, {threads}});
+     <span class="pl-c1">vadd_gpu</span>(a, b, c);
+     <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}</pre></div>
+
+<p>Here is something to read:</p>
+
+<h3>
+<a id="publications" class="anchor" href="#publications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Publications</h3>
+
+<ul>
+<li><p>M. Haidl, M. Steuwer, T. Humernbrum, and S. Gorlatch, "Multi-Stage Programming for GPUs in Modern C++ using PACXX," <em>in Proceedings of General-Purpose GPU at PPoPP '16, GPGPU-9</em>. (to appear)</p></li>
+<li><p>M. Haidl and S. Gorlatch, "Programming GPUs with C++14 and Just-In-Time Compilation," <em>in Proceedings of the International Conference on Parallel Computing (ParCo) 2015</em>. (to appear)</p></li>
+<li><p>M. Haidl and S. Gorlatch, "<a href="http://dl.acm.org/citation.cfm?id=2688363">PACXX: Towards a Unified Programming Model for Programming Accelerators Using C++14</a>," <em>in Proceedings of LLVM Compiler Infrastructure in HPC at SC '14, LLVM-HPC 2014</em>, IEEE, 2014, pp. 1-11.</p></li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">PACXX maintained by <a href="https://github.com/pacxx">pacxx</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
