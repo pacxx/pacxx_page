@@ -52,9 +52,9 @@
     <span class="pl-c1">size_t</span> threads = <span class="pl-c1">128</span>;
     <span class="pl-c1">size_t</span> blocks = (n + (threads * <span class="pl-c1">2</span> - <span class="pl-c1">1</span>)) / (threads * <span class="pl-c1">2</span>);
 
-     <span class="pl-k">auto</span> vadd_gpu = <span class="pl-c1">kernel</span>(vadd, {{blocks}, {threads}});
-     <span class="pl-c1">vadd_gpu</span>(a, b, c);
-     <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+    <span class="pl-k">auto</span> vadd_gpu = <span class="pl-c1">kernel</span>(vadd, {{blocks}, {threads}});
+    <span class="pl-c1">vadd_gpu</span>(a, b, c);
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
 }</pre></div>
 
 <p>Here is something to read:</p>
