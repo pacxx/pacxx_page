@@ -45,6 +45,7 @@
     vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-c1">c</span>(n);
 
     <span class="pl-k">auto</span> vadd = [](<span class="pl-k">const</span> vector&lt;<span class="pl-k">int</span>&gt; &amp;a, <span class="pl-k">const</span> vector&lt;<span class="pl-k">int</span>&gt; &amp;b, vector&lt;<span class="pl-k">int</span>&gt; &amp;c) {
+       <span class="pl-k">auto</span> i = Thread::get().global.x;
        <span class="pl-k">if</span> (i &gt;= a.<span class="pl-c1">size</span>()) <span class="pl-k">return</span>;
        c[i] = a[i] + b[i];
     };
